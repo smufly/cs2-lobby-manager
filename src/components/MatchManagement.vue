@@ -4,6 +4,8 @@ import { ref, computed } from 'vue'
 import BaseModal from "./BaseModal.vue"
 import { usePlayers } from '@/stores/players'
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const store = usePlayers()
 
 const activePlayer = computed(() => {
@@ -72,7 +74,7 @@ const handleConfigurePlayers = () => {
             <div class="flex flex-col gap-y-2 items-center">
                 <div class="overflow-hidden w-20 h-20 border border-blue-500 rounded-sm">
                     <img class="w-full h-full object-center object-cover"
-                        :src="activePlayer ? activePlayer.url : '/images/question-mark.jpg'"
+                        :src="activePlayer ? activePlayer.url : `${BASE_URL}/images/question-mark.jpg`"
                         alt="Active player avatar" />
                 </div>
                 <h3 class="text-blue-800 text-xl font-semibold dark:text-blue-400">

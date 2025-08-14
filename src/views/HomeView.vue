@@ -5,6 +5,8 @@ import { Icon } from '@iconify/vue'
 import { usePlayers } from '@/stores/players'
 import MatchManagement from '@/components/MatchManagement.vue'
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const store = usePlayers()
 
 const getPlayers = () => {
@@ -20,7 +22,7 @@ const handleAddPlayer = () => {
     if (playerNameInput.value.length > 15) return alert('Nick name too long.')
     store.addPlayer({
         nick: playerNameInput.value.trim(),
-        url: '/images/avatar.webp',
+        url: `${BASE_URL}/images/avatar.webp`,
         assignment: 'No assignment',
         isActive: false,
     })
@@ -102,7 +104,7 @@ const handleAssignmentAction = (playerId, outcome) => {
                             <Icon icon="lucide:clock-4" />
                             <span class="font-semibold text-sm">{{
                                 player.roundLimit + ' rounds'
-                                }}</span>
+                            }}</span>
                         </div>
                         <span class="font-semibold text-green-500 text-sm">{{ player.xp }} XP</span>
                         <div class="flex items-center justify-between gap-x-2">
